@@ -10,7 +10,8 @@ class StudentsController < ApplicationController
     end
 
     def highest_grade
-        student = Student.where(grade: Student.maximum(:grade))
+        # take - returns an object fetched by SELECT * FROM people LIMIT 1
+        student = Student.where(grade: Student.maximum(:grade)).take
         render json: student
     end
 end
